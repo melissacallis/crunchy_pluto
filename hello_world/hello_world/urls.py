@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
@@ -43,13 +45,11 @@ urlpatterns = [
     path('add_education/<str:username>/', views.add_education, name='add_education'), 
     path('edit_education/<str:username>/<int:education_id>/', views.edit_education, name='edit_education'),
     path('delete_education/<str:username>/<int:education_id>/', views.delete_education, name='delete_education'),
-
-
-   
-
-
-
+    
 
 ]
 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

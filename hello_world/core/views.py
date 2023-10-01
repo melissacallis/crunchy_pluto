@@ -5,6 +5,8 @@ from .forms import UserForm
 from .forms import UserForm, BulletPointForm, ExperienceForm, EducationForm
 from .models import BulletPoint, UserProfile, Experience, Education
 from .forms import BulletPointFormSet
+from django.conf import settings
+import os
 
 
 from django.shortcuts import render
@@ -18,7 +20,7 @@ def user_form(request, username=None):
     user = None  # Set user to None if this is a new user registration
 
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserForm(request.POST, request.FILES)
 
         if form.is_valid():
             # Form data is valid, create or update the UserProfile
@@ -31,6 +33,11 @@ def user_form(request, username=None):
             user_profile.zip_code = form.cleaned_data['zip_code']
             user_profile.phone_number = form.cleaned_data['phone_number']
             user_profile.email = form.cleaned_data['email']
+            user_profile.profile_image = form.cleaned_data['profile_image']
+            user_profile.resume = form.cleaned_data['resume']
+            user_profile.linkedin_link = form.cleaned_data['linkedin_link']
+            user_profile.github_link = form.cleaned_data['github_link']
+            user_profile.project_link = form.cleaned_data['project_link'] 
             user_profile.save()
 
             # Redirect to success_demo with the 'username' parameter
@@ -316,4 +323,10 @@ def delete_education(request, username, education_id):
         education.delete()
 
     return redirect('success_demo', username=username)
+
+
+
+    
+    
+
 

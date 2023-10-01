@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 
 
@@ -10,8 +11,12 @@ class UserProfile(models.Model):
     state = models.CharField(max_length=2)
     zip_code = models.CharField(max_length=10)
     phone_number = models.CharField(max_length=15)
-    email = models.EmailField()
-    
+    email = models.EmailField() 
+    profile_image = models.ImageField(upload_to='images/', blank=True, null=True)
+    resume = models.FileField(upload_to='resumes/', blank=True, null=True)
+    linkedin_link = models.URLField(blank=True)
+    github_link = models.URLField(blank=True)
+    project_link = models.URLField(blank=True)   
     
     class Meta:
         app_label = 'core'

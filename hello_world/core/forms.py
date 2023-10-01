@@ -6,7 +6,8 @@ from .models import Experience, Education
 class UserForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['username', 'first_name', 'last_name', 'city', 'state', 'zip_code', 'phone_number', 'email', ]
+        fields = ['username', 'first_name', 'last_name', 'city', 'state', 'zip_code', 'phone_number', 'email',
+                  'profile_image', 'resume', 'linkedin_link', 'github_link', 'project_link']
 
 class BulletPointForm(forms.ModelForm):
     class Meta:
@@ -26,3 +27,13 @@ class EducationForm(forms.ModelForm):
     class Meta:
         model = Education
         fields = ['school', 'major', 'degree', 'gpa', 'start_date', 'end_date']
+        
+class ProfileImageUploadForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['profile_image']
+
+class ResumeUploadForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['resume']
