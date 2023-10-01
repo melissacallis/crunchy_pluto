@@ -1,0 +1,12 @@
+{% extends 'core/layout.html' %}
+
+{% block content %}
+  <h2>Edit Education</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% url 'success_demo' username=user.username %}">Back to Dashboard</a>
+{% endblock %}
+

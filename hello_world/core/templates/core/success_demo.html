@@ -1,0 +1,184 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}Success Page{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Success!</h1>
+        <p class="lead">
+            <!-- Page Content -->
+            <div class="container-fluid p-0">
+                <!-- About -->
+                <section class="resume-section" id="about">
+                    <div class="resume-section-content">
+                        <h1 class="mb-0">
+                            {{ user.first_name }} {{ user.last_name }}
+                            <span class="text-primary"><a href="assets/img/myresume.pdf" class="btn btn-lg btn-primary">View Resume</a></span>
+                        </h1>
+                        <div class="subheading mb-5">
+                            · {{ user.city }}, {{ user.state }} {{ user.zip_code }} · {{ user.phone_number }} ·
+                            <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                        </div>
+                        <p class="lead mb-5">
+                            <ul class="list-unstyled">
+                                <div class="container-fluid">
+                                    <ul class="list-unstyled">
+                                        {% for skill in skills %}
+                                        <li class="d-flex align-items-center mb-2">
+                                            <div style="flex-grow: 1;">
+                                                <span class="bullet-point">&#8226;</span> {{ skill.name }}
+                                            </div>
+                                            <div style="margin-right: 10px;">
+                                                <a href="{% url 'edit_skills' username=user.username skill_id=skill.id %}" class="btn btn-primary btn-sm">Edit</a>
+                                            </div>
+                                            <div>
+                                                <form method="post" action="{% url 'delete_skill' username=user.username skill_id=skill.id %}">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="btn btn-success btn-sm">Delete</button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                        {% empty %}
+                                        <li>No skills created yet.</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <a href="{% url 'add_skills' username=user.username %}" class="btn" style="background-color: #009dc4; color: #fff;">Add Skills</a>
+
+                                </div>
+                            </ul>
+                        </p>
+                    </div>
+                </section>
+                
+
+                         
+
+
+<section class="resume-section" id="experience">
+    <div class="resume-section-content">
+        <div class="card mb-5">
+            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
+                <div class="row">
+                    <div class="col">
+                        Experience
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'add_experience' username=user.username %}" class="btn" style="background-color: #009dc4; color: #fff;">Add Experience</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                {{ experience.summary_statement }}
+                {% for experience in experiences %}
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">
+                            <span style="display: inline-block; width: 45%;">{{ experience.company_name }}</span>
+                            <span style="display: inline-block; width: 10%;">
+                                <a href="{% url 'edit_experience' username=user.username experience_id=experience.id %}" class="btn btn-primary">Edit</a>
+                            </span>
+                            <span style="display: inline-block; width: 20%;">
+                                <form method="post" action="{% url 'delete_experience' username=user.username experience_id=experience.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </span>
+                        </h3>
+                        <div class="subheading mb-3">{{ experience.job_title }}</div>
+                        <p>
+                            <ul>
+                                {% if experience.description_1 %}
+                                    <li>{{ experience.description_1 }}</li>
+                                {% endif %}
+                                {% if experience.description_2 %}
+                                    <li>{{ experience.description_2 }}</li>
+                                {% endif %}
+                                {% if experience.description_3 %}
+                                    <li>{{ experience.description_3 }}</li>
+                                {% endif %}
+                                {% if experience.description_4 %}
+                                    <li>{{ experience.description_4 }}</li>
+                                {% endif %}
+                                {% if experience.description_5 %}
+                                    <li>{{ experience.description_5 }}</li>
+                                {% endif %}
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">{{ experience.start_date|date:"F Y" }} - {{ experience.end_date|date:"F Y" }}</span></div>
+                </div>
+                {% empty %}
+                <p>No experiences added yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+   
+<!-- Education -->
+<!-- Education -->
+<section class="resume-section" id="education">
+    <div class="resume-section-content">
+        <div class="card mb-5">
+            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
+                <div class="row">
+                    <div class="col">
+                        Experience
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'add_education' username=user.username %}" class="btn" style="background-color: #009dc4; color: #fff;">Add Experience</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                {% for item in education %}
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+
+                        <h3 class="mb-0">
+                            <span style="display: inline-block; width: 45%;">{{ item.school }}</span>
+                            <span style="display: inline-block; width: 10%;">
+                                <a href="{% url 'edit_education' username=user.username education_id=item.id %}" class="btn btn-primary">Edit</a>
+                            </span>
+                            <span style="display: inline-block; width: 20%;">
+                                <form method="post" action="{% url 'delete_education' username=user.username education_id=item.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </span>
+                        </h3>
+                        
+                        
+                        <div class="subheading mb-3">{{ item.degree }}</div>
+                        <div>{{ item.major }}</div>
+                        <p>{{ item.gpa }}</p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">Dates: {{ item.start_date }} - {{ item.end_date }}</span></div>
+                </div>         
+             
+                
+                {% empty %}
+                <p>No experiences added yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% endblock %}
+
+   
+
+
+
+

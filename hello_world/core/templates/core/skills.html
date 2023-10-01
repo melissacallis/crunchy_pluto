@@ -1,0 +1,28 @@
+<!-- skills.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Skills</title>
+</head>
+<body>
+    <h1>Add Skills</h1>
+    
+    <!-- Add the form here to allow users to input skills -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Skills List</h2>
+    <ul>
+        <!-- Loop through the skills and render each one as a list item -->
+        {% for skill in skills %}
+            <li>{{ skill.name }}: {{ skill.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

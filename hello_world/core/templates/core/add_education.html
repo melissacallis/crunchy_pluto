@@ -1,0 +1,20 @@
+{% extends 'core/layout.html' %}
+
+{% block title %}Success Page{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+<body>
+    <h2>Add Education</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form.as_p }}
+        <button type="submit">Add Education</button>
+    </form>
+    
+</body>
+</div>
+</div>
+{% endblock %}
