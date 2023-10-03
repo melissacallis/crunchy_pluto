@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserForm
 from .models import UserProfile
 from .forms import UserForm
-from .forms import UserForm, BulletPointForm, ExperienceForm, EducationForm
-from .models import BulletPoint, UserProfile, Experience, Education
+from .forms import UserForm, BulletPointForm, ExperienceForm, EducationForm, AccomplishmentsForm
+from .models import BulletPoint, UserProfile, Experience, Education, Accomplishments
 from .forms import BulletPointFormSet
 from django.conf import settings
 import os
@@ -212,6 +212,7 @@ def success_demo(request, username=None):
     skills = BulletPoint.objects.filter(user_profile=user)
     experiences = Experience.objects.filter(user_profile=user)
     education = Education.objects.filter(user_profile=user)
+    accomplishments = Accomplishments.objects.filter(user=user)
         # Add this line to fetch experiences
         # Create a list of descriptions for each experience
     descriptions_list = []
@@ -233,7 +234,7 @@ def success_demo(request, username=None):
             # Redirect back to the success_demo page
             return redirect('success_demo', username=username)
 
-    return render(request, 'core/success_demo.html', {'user': user, 'username': username, 'skills': skills, 'experiences': experiences, 'education': education})
+    return render(request, 'core/success_demo.html', {'user': user, 'username': username, 'skills': skills, 'experiences': experiences, 'education': education, 'accomplishments':accomplishments})
 
 
 def view_user_profile(request, username):
@@ -323,6 +324,43 @@ def delete_education(request, username, education_id):
         education.delete()
 
     return redirect('success_demo', username=username)
+
+def add_certification(request, username):
+    user_profile = UserProfile.objects.get(username=username)
+    
+    if request.method == 'POST':
+        form = AccomplishmentsForm(request.POST, request.FILES)
+        if form.is_valid():
+            accomplishment = form.save(commit=False)  # Save the form data without committing to the database
+            accomplishment.user = user_profile  # Set the user for the accomplishment
+            accomplishment.save()  # Save the accomplishment to the database
+            return redirect('success_demo', username=username)  # Redirect to the user's profile page
+    else:
+        form = AccomplishmentsForm()
+    
+    return render(request, 'core/add_certification.html', {'form': form})
+
+
+def edit_certification(request, username, accomplishments_id):
+    user_profile = get_object_or_404(UserProfile, username=username)
+    certification = get_object_or_404(Accomplishments, id=accomplishments_id, user=user_profile)
+
+    if request.method == 'POST':
+        form = AccomplishmentsForm(request.POST, request.FILES, instance=certification)
+        if form.is_valid():
+            form.save()
+            return redirect('success_demo', username=username)
+    else:
+        form = AccomplishmentsForm(instance=certification)
+
+    return render(request, 'core/edit_certification.html', {
+        'form': form,
+        'username': username,
+        'certification_id': accomplishments_id,
+        'certification': certification if request.method != 'POST' else form.cleaned_data.get('accomplishments')
+    })
+
+
 
 
 

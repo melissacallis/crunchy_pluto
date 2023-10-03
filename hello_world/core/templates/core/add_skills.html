@@ -6,14 +6,12 @@
 <body>
     <h1>Add Skills</h1>
     
-    <!-- Add the form here to allow users to input skills -->
+
+
     <form method="post">
         {% csrf_token %}
-        {{ form.name.label_tag }}
-        {{ form.name }}
-        {{ form.description.label_tag }}
-        {{ form.description }}
-        <button type="submit">Submit</button>
+        {{ form.as_p }}
+        <button type="submit">Save Experience</button>
     </form>
 
   

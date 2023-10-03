@@ -1,0 +1,12 @@
+{% extends 'core/layout.html' %}
+
+{% block content %}
+  <h2>Edit Accomplishment</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+  <a href="{% url 'success_demo' username=username %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}
+

@@ -70,20 +70,26 @@
                     <div class="resume-section-content">
                         <h1 class="mb-0">
                             {{ user.first_name }} {{ user.last_name }}
-                            <span class="text-primary"><a href="{{ user.resume.url }}" class="btn btn-lg btn-primary">View Resume</a></span>
+                            {% if user.resume %}
+                                <span class="text-primary"><a href="{{ user.resume.url }}" class="btn btn-lg btn-primary">View Resume</a></span>
+                            {% endif %}
                         </h1>
                         <div class="subheading mb-5">
                             · {{ user.city }}, {{ user.state }} {{ user.zip_code }} · {{ user.phone_number }} ·
                             <a href="mailto:{{ user.email }}">{{ user.email }}</a>
                         </div>
-                        <p class="lead mb-5">
+
+                                           
                             <ul class="list-unstyled">
-                                <div class="container-fluid">
+                                <div class="container">
                                     <ul class="list-unstyled">
+
                                         {% for skill in skills %}
-                                        <li class="d-flex align-items-center mb-2">
+                                        <li class="d-flex align-items-left mb-2">
                                             <div style="flex-grow: 1;">
-                                                <span class="bullet-point">&#8226;</span> {{ skill.name }}
+                                                
+                                                <span class="bullet-point">&#8226; {{ skill.name }}</span>
+                                                
                                             </div>
                                             <div style="margin-right: 10px;">
                                                 <a href="{% url 'edit_skills' username=user.username skill_id=skill.id %}" class="btn btn-primary btn-sm">Edit</a>
@@ -184,10 +190,10 @@
             <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
                 <div class="row">
                     <div class="col">
-                        Experience
+                        Education
                     </div>
                     <div class="col-auto">
-                        <a href="{% url 'add_education' username=user.username %}" class="btn" style="background-color: #009dc4; color: #fff;">Add Experience</a>
+                        <a href="{% url 'add_education' username=user.username %}" class="btn" style="background-color: #009dc4; color: #fff;">Add Education</a>
                     </div>
                 </div>
             </div>
@@ -225,6 +231,58 @@
         </div>
     </div>
 </section>
+
+<!-- Awards & Certifications -->
+<section class="resume-section" id="awards">
+    <div class="resume-section-content">
+        <div class="card mb-5">
+            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
+                <div class="row">
+                    <div class="col">
+                        Education
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'add_certification' username=user.username %}" class="btn" style="background-color: #009dc4; color: #fff;">Add Education</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    {% for accomplishment in user.accomplishments_set.all %}
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fas fa-trophy text-warning me-2"></i> {{ accomplishment.accomplishments }}
+                            </div>
+                            <div>
+                                {% if accomplishment.accomplishment_image %}
+                                <img
+                                    class="thumbnail-image"
+                                    src="{{ accomplishment.accomplishment_image.url }}"
+                                    alt="PDF Thumbnail"
+                                />
+                                {% endif %}
+                            </div>
+                            <div>
+                                <a href="{% url 'edit_certification' username=user.username accomplishments_id=accomplishment.id %}" class="btn btn-warning">Edit</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <li>No accomplishments/certifications have been added yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+                    
+
+
+ 
 
 
 

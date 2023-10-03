@@ -1,13 +1,13 @@
 from django import forms
 from .models import UserProfile, BulletPoint  # Import UserProfile from the correct module
 from django.forms import formset_factory
-from .models import Experience, Education 
+from .models import Experience, Education, Accomplishments 
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['username', 'first_name', 'last_name', 'city', 'state', 'zip_code', 'phone_number', 'email',
-                  'profile_image', 'resume', 'linkedin_link', 'github_link', 'project_link']
+                  'profile_image', 'resume', 'linkedin_link', 'github_link', 'project_link', ]
 
 class BulletPointForm(forms.ModelForm):
     class Meta:
@@ -37,3 +37,8 @@ class ResumeUploadForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['resume']
+        
+class AccomplishmentsForm(forms.ModelForm):
+    class Meta:
+        model = Accomplishments
+        fields = ['accomplishments', 'accomplishment_image']
