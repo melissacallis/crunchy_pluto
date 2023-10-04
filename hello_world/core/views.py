@@ -15,6 +15,9 @@ def index(request):
     # Your view logic here
     return render(request, 'core/index.html')
 
+def frontpage(request):
+    # Your view logic here
+    return render(request, 'core/frontpage.html')
 
 def user_form(request, username=None):
     user = None  # Set user to None if this is a new user registration

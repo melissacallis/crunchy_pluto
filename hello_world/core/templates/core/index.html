@@ -1,388 +1,187 @@
-{% load static %}
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Resume - Start Bootstrap Theme</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <title>New Age - Start Bootstrap Theme</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'styles.css' %}" rel="stylesheet" />
-
-
+        <link href="{% static 'styles1.css' %}" rel="stylesheet" />
 
     </head>
     <body id="page-top">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Navbar</a>
-          
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'user_form' %}">Create my own profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Edit my profile</a>
-                </li>
-              </ul>
-             
-            </div>
-          </nav>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span>  <!-- Social Icons -->
-                    <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/missy-cavazos-96079315/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/melissacallis"><i class="fab fa-github"></i></a>
-                    </div>
-            </span>
-                <span class="d-block d-lg-none">Melissa Cavazos</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills & Projects</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Certifications</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                </ul>
-
-    </div>
-</nav>
-
-
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"></h1>
-      <p class="lead">        <!-- Page Content-->
-        <div class="container-fluid p-0">
-            <!-- About-->
-            <section class="resume-section" id="about">
-                <div class="resume-section-content">
-                    <h1 class="mb-0">
-                        Melissa
-                        <span class="text-primary">Cavazos <a href="assets/img/myresume.pdf" class="btn btn-lg btn-primary">View Resume</a> <!-- Add the button here -->
-
-                    </h1>
-                    <div class="subheading mb-5">
-                        · Corpus Christi, Tx 78413 · (361) 558-6624 ·
-                        <a href="mailto:name@email.com">melissacallis@yahoo.com</a>
-                    </div>
-
-                    <p class="lead mb-5"><ul>
-                        <li>Experience with programming languages such as Java, Python/</li>
-                        <li>Experience with web technologies such as HTML, CSS, and JavaScript</li>
-                        <li>Understanding of software development principles, algorithms, and data structures</li>
-                        <li>Strong problem-solving skills</li>
-                        <li>Ability to work independently and in a team environment</li>
-                        <li>Good communication and interpersonal skills</li>
-                        <li>Experience with application development</li>
-                        <li>Ability to work independently, capture business requirements, design solutions, and manage projects through to completion.</li>
-                        <li>Strong communication, analytical, problem-solving, and troubleshooting skills</li>
-                        <li>Excellent organizational skills and ability to work on multiple projects concurrently</li>
-                        <li>Eager to learn, excited about technology and solving problems</li>
-                        <li>Frameworks & tools: Django</li>
-                        <li>Unit Testing</li>
-                        <li>Repository: Git</li>
-                      </ul></p>
-
-                </div>
-            </section></p>
-    </div>
-  </div>
-
-  <section class="resume-section" id="experience">
-    <div class="resume-section-content">
-        <div class="card mb-5">
-            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
-                Experience
-            </div>
-            <div class="card-body">
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Self-taught Python Developer</h3>
-                        <div class="subheading mb-3">Python Developer</div>
-                        <p><ul>
-                            <li>Utilized Salesforce Live Agent to collaborate and chat with patients via Facebook Messenger.</li>
-                            <li>Compiled, charted data and reported directly to stakeholders, researchers, developing engineers, and safety officers to provide program feedback and ensure successful implementation of CI/CD project workflows.</li>
-                            <li>Closely followed agile practices by collaborating with cross-functional teams: Working closely with marketing, content, design, and other teams for data analysis to employ social media strategies with overall marketing initiatives and ensuring consistent messaging and branding.</li>
-                        </ul></p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">March 2020 - Present</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Engagement Program Analyst</h3>
-                        <div class="subheading mb-3">Abbvie Pharmaceuticals - IC</div>
-                        <p>Capitalize on patient engagement via teleservices, web, chat.
-                            <li>Utilized Salesforce Live Agent to collaborate and chat with patients via Facebook Messenger.</li>
-                            <li>Compiled, charted data and reported directly to stakeholders, researchers, developing engineers, and safety officers to provide program feedback and ensure successful implementation of CI/CD project workflows.</li>
-                            <li>Closely followed agile practices by collaborating with cross-functional teams: Working closely with marketing, content, design, and other teams for data analysis to employ social media strategies with overall marketing initiatives and ensuring consistent messaging and branding.</li> </p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">January 2018 - Present</span></div>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="#page-top">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Features</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Download</a></li>
+                    </ul>
+                    <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                        <span class="d-flex align-items-center">
+                            <i class="bi-chat-text-fill me-2"></i>
+                            <span class="small">Send Feedback</span>
+                        </span>
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </nav>
+        <!-- Mashead header-->
+        <header class="masthead">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6">
+                        <!-- Mashead text and app badges-->
+                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                            <h1 class="display-1 lh-1 mb-3">Showcase your full potential... </h1>
+                            <p class="lead fw-normal text-muted mb-5">Display your skills and acheivements with your enhanced digital profile</p>
+                            <div class="d-flex flex-column flex-lg-row align-items-center">
+                                
+                                <a href="{% url 'frontpage' %}" class="btn btn-primary me-lg-3 mb-4 mb-lg-0">View Live Demo</a>
 
-
-<!-- Education -->
-<section class="resume-section" id="education">
-    <div class="resume-section-content">
-        <div class="card mb-5">
-            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
-                Education
-            </div>
-            <div class="card-body">
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Texas A&M Corpus Christi
-                        </h3>
-                        <div class="subheading mb-3">Bachelor of Arts, Psychology</div>
-                        <div>Computer Science - Web Development Track</div>
-                        <p>GPA: 3.4</p>
+                                
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 1999 - August 2001</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">Harlingen High School</h3>
-                        <div class="subheading mb-3">Architectural Drafting Program</div>
-                        <p>GPA: 3.0</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">June 1993</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="col-lg-6">
+                        <!-- Masthead device mockup feature-->
+                        
+                            
 
+                                
+                                
+                                    <div class="container">
+                                        <!-- PUT CONTENTS HERE:-->
+                                        <!-- * * This can be a video, image, or just about anything else.-->
+                                        <!-- * * Set the max width of your media to 100% and the height to-->
+                                        <!-- * * 100% like the demo example below.-->
+                                        <img src="{% static 'img/demo_screenshot.png' %}" alt="Demo Screenshot" width="900" height="600">
 
-
-
-<!-- Skills -->
-<section class="resume-section" id="skills">
-    <div class="resume-section-content">
-        <div class="card mb-5"></div>
-            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
-                Skills & Projects
-            </div>
-            <section>
-            <div class="card-body">
-                <div class="row">
-                    <!-- First Column -->
-                    <div class="col-md-6">
-                        <div class="subheading mb-3">Programming Languages & Tools</div>
-                        <ul class="list-inline dev-icons">
-                            <li class="list-inline-item"> <img src="https://th.bing.com/th?q=Python+Icon&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-US&cc=US&setlang=en&adlt=strict&t=1&mw=247" alt="Python Icon" width="60" height="60"></i></li>
-                            <li class="list-inline-item"><img src= "https://www.tc-web.it/wp-content/uploads/2018/07/javascript_logo.jpg" width="60" height="60"></li>
-                            <li class="list-inline-item"><img src= "https://th.bing.com/th/id/OIP.2iM-LS6y-ohoSNBO8WZUVgHaHa?pid=ImgDet&rs=1" width="60" height="60"></li>
-                            <li class="list-inline-item"><img src= "https://th.bing.com/th/id/OIP.KlLKd0eCgMdlaUcTPhK3owAAAA?pid=ImgDet&rs=1" width="70" height="60"></li>
-                            <li class="list-inline-item"><img src= "https://th.bing.com/th/id/OIP.ijGNsIwDPRIax9J88w72hAHaHa?w=128&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" width="70" height="60"></li>
-                            <li class="list-inline-item"><img src= "https://th.bing.com/th/id/OIP.5Atf7_Tnt_LchLdqCHLYCQHaEM?w=264&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" width="80" height="60"></li>
-
-                            <!-- Add your skills here -->
-                        </ul>
-                    </div>
-                    <!-- Second Column -->
-
-                    <div class="col-md-6">
-                        <div class="subheading mb-3">Workflow</div>
-                        <ul class="fa-ul mb-0">
-                            <li>
-
-                                <span class="fa-li"><i class="fas fa-check"></i></span>
-                                Mobile-First, Responsive Design
-                            </li>
-                            <li>
-                                <span class="fa-li"><i class="fas fa-check"></i></span>
-                                Cross Browser Testing & Debugging
-                            </li>
-                            <!-- Add your workflow items here -->
-                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-
-<!-- Card Group -->
-<div class="card-group mt-6">
-    <!-- First Card -->
-    <div class="card mb-4"> <!-- Add mb-4 class to create space -->
-        <img class="card-img-top mx-auto" src="assets/img/auctionscreenshot.png" alt="Card image cap" style="max-width: 70%;">
-        <div class="card-body">
-            <h5 class="card-title">Recipe Project Includes</h5>
-            <p class="card-text">
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Mobile-First, Responsive Design
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Browser Testing & Debugging
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Functional Teams
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Agile Development & Scrum
-                    </li>
-                </ul></p>
-                <a href="https://projectsheroku-46cc8d3cc4e6.herokuapp.com/">View Project</a>
-            </small>
-        </div>
-    </div>
-    <!-- Second Card -->
-    <div class="card mb-4"> <!-- Add mb-4 class to create space -->
-        <img class="card-img-top mx-auto" src="assets/img/recipescreenshot.png" alt="Card image cap" style="max-width: 70%;">
-        <div class="card-body">
-            <br>
-            <h5 class="card-title">CS50 Auction Project Includes:</h5>
-            <p class="card-text">
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Mobile-First, Responsive Design
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Browser Testing & Debugging
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Functional Teams
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Agile Development & Scrum
-                    </li>
-                </ul>
-            </p>
-            <p class="card-text"><small class="text-muted"><p class="card-text">
-                <p>
-                  <a href="https://projectsheroku-recipes-6db00650a597.herokuapp.com/">View Project</a>
-
-              </p>
-
-        </div>
-    </div>
-</div>
-
-</section>
-
-<!-- Awards & Certifications -->
-<section class="resume-section" id="awards">
-    <div class="resume-section-content">
-        <div class="card mb-5">
-            <div class="card-header" style="background-color: lightblue; color: black; font-size: 30px;">
-                Awards & Certifications
             </div>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <i class="fas fa-trophy text-warning me-2"></i> CS50 Python - Harvard
-                        <!-- Thumbnail Image with PDF Icon -->
-                        <img
-                        class="thumbnail-image"
-                        src="assets/img/cs50p.png"
-                        alt="PDF Thumbnail"
-                        data-pdf-src="assets/img/cs50p.png"
-/>
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-trophy text-warning me-2"></i> Introduction to Web Development with HTML5, CSS3, and JavaScript
-                        <img
-                        class="thumbnail-image"
-                        src="assets/img/webdev.png"
-                        alt="PDF Thumbnail"
-                        data-pdf-src="assets/img/webdev.png"
-                        />
-                    </li>
-                    <li class="list-group-item">
-                        <i class="fas fa-trophy text-warning me-2"></i> Introduction to Cloud Computing- IBM Certification
-                        <img
-                        class="thumbnail-image"
-                        src="assets/img/cloudcomputing.png"
-                        alt="PDF Thumbnail"
-                        data-pdf-src="assets/img/webdev.png"
-                        />
-                    </li>
+        </header>
+        <!-- Quote/testimonial aside-->
+        <aside class="text-center bg-gradient-primary-to-secondary">
+            <div class="container px-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-xl-8">
+                        <div class="h2 fs-1 text-white mb-4">"An intuitive solution to a common problem that we all face, wrapped up in a single app!"</div>
+                        <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
+                    </div>
+                </div>
+            </div>
+        </aside>
+       
 
-                    <!-- Add your award/certification items here -->
-                </ul>
+
+        <!-- Footer-->
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
+                    <a href="#!">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="#!">FAQ</a>
+                </div>
+            </div>
+        </footer>
+        <!-- Feedback Modal-->
+        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-primary-to-secondary p-4">
+                        <h5 class="modal-title font-alt text-white" id="feedbackModalLabel">Send feedback</h5>
+                        <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body border-0 p-4">
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                                <label for="name">Full name</label>
+                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                            </div>
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                                <label for="email">Email address</label>
+                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                            </div>
+                            <!-- Phone number input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                <label for="phone">Phone number</label>
+                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                            </div>
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                                <label for="message">Message</label>
+                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                            </div>
+                            <!-- Submit success message-->
+                            <!---->
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                    To activate this form, sign up at
+                                    <br />
+                                    <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                </div>
+                            </div>
+                            <!-- Submit error message-->
+                            <!---->
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-            <hr class="m-0" />
-            <!-- Interests-->
-            <section class="resume-section" id="interests">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Interests</h2>
-                    <p>Apart from being a python enthusiasts, I am a life learner. I enjoy reading, and learning about culture and philosophy. I find interest in biking, swimming, and spending time with family.</p>
-                    <p class="mb-0">When indoors, I relax by viewing other historical movies and television shows. I am an aspiring python engineer, and I spend a large amount of my free time exploring the latest technology advancements in the all things python and cloud computing worlds.</p>
-                </div>
-            </section>
-            <hr class="m-0" />
-
-
-
-
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@2.10.2/dist/umd/popper.min.js" integrity="sha384-4k5qn5fHU02Zab5C5zr5KKay3dJ5c5sqLXar5zp3E7p7COIHnvXBC5zr5KKay3dJ" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-
-        <script>
-            // Get all thumbnail images
-            const thumbnailImages = document.querySelectorAll('.thumbnail-image');
-
-            // Add click event listener to each thumbnail image
-            thumbnailImages.forEach((image) => {
-              image.addEventListener('click', function () {
-                const pdfSrc = this.getAttribute('data-pdf-src');
-                if (pdfSrc) {
-                  window.open(pdfSrc, '_blank');
-                }
-              });
-            });
-          </script>
-
+        <script src="scripts1.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

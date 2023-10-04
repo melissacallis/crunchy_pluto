@@ -47,6 +47,7 @@ urlpatterns = [
     path('delete_education/<str:username>/<int:education_id>/', views.delete_education, name='delete_education'),
     path('add_certification/<str:username>/', views.add_certification, name='add_certification'),
     path('edit_certification/<str:username>/<int:accomplishments_id>/', views.edit_certification, name='edit_certification'),
+    path('frontpage/', views.frontpage, name='frontpage'),
     
 
 ]
