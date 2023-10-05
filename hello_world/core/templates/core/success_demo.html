@@ -1,4 +1,6 @@
 {% extends 'core/layout.html' %}
+{%  load static %}
+
 
 {% block title %}Success Page{% endblock %}
 
@@ -9,7 +11,9 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Navbar</a>
+        <img src="{% static 'img/logo.png' %}" alt="Logo" width="30" height="30" class="me-2">
+        Jobchase
+    </a>
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -30,6 +34,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
 
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        
             <span>  <!-- Social Icons -->
                 <div class="social-icons">
                     <a class="social-icon" href="{{ user.linkedin_link }}"><i class="fab fa-linkedin-in"></i></a>
@@ -39,6 +44,10 @@
             
             <span class="d-block d-lg-none">Melissa Cavazos</span>
             <span class="d-none d-lg-block">
+                
+
+
+
                 <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ user.profile_image.url }}" alt="{{ user.username }}'s Profile Image">
             </span>
             </a>
@@ -60,8 +69,8 @@
 
 
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Success!</h1>
+    
+        <h1 class="display-4"> </h1>
         <p class="lead">
             <!-- Page Content -->
             <div class="container-fluid p-0">
@@ -69,7 +78,7 @@
                 <section class="resume-section" id="about">
                     <div class="resume-section-content">
                         <h1 class="mb-0">
-                            {{ user.first_name }} {{ user.last_name }}
+                            {{ user.first_name }} <span class="text-primary"> {{ user.last_name }} </span>
                             {% if user.resume %}
                                 <span class="text-primary"><a href="{{ user.resume.url }}" class="btn btn-lg btn-primary">View Resume</a></span>
                             {% endif %}
@@ -82,8 +91,9 @@
                                            
                             <ul class="list-unstyled">
                                 <div class="container">
+                                    
                                     <ul class="list-unstyled">
-
+                                       
                                         {% for skill in skills %}
                                         <li class="d-flex align-items-left mb-2">
                                             <div style="flex-grow: 1;">
@@ -131,8 +141,10 @@
                 </div>
             </div>
             
-            <div class="card-body">
-                {{ experience.summary_statement }}
+
+
+            
+            <div class="card-body">                
                 {% for experience in experiences %}
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">

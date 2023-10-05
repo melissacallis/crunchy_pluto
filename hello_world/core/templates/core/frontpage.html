@@ -25,7 +25,9 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Navbar</a>
+            <img src="{% static 'img/logo.png' %}" alt="Logo" width="30" height="30" class="me-2">
+            jobchase
+        </a>
           
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -38,7 +40,15 @@
                 <li class="nav-item">
                   <a class="nav-link disabled" href="#">Edit my profile</a>
                 </li>
-              </ul>
+                <li class="nav-item">
+                <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                    <span class="d-flex align-items-center">
+                        <i class="bi-chat-text-fill me-2"></i>
+                        <span class="small">Send Feedback</span>
+                    </span>
+                </button>
+            </li>
+              </ul>         
              
             </div>
           </nav>
