@@ -2,10 +2,21 @@
 {%  load static %}
 
 
-{% block title %}Success Page{% endblock %}
+{% block title %}{% if messages %}
+<div class="messages">
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
 
 
 {% block content %}
+
+
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,14 +29,15 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'user_form' %}">Create my own profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Edit my profile</a>
+              <a class="nav-link" href="{% url 'edit_profile' username=user.username %}">Edit my profile</a>
             </li>
+            <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'logout' %}">Logout</a></li>
           </ul>
          
         </div>

@@ -1,12 +1,33 @@
+<!-- core/templates/core/edit_profile.html -->
 {% extends "core/layout.html" %}
 
 {% block content %}
-  <div class="container mt-5">
-    <h2>Edit Experience</h2>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
-  </div>
+  <h2>Edit Profile</h2>
+
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<style>
+    .form-group {
+        margin-bottom: 20px; /* Add margin between form groups */
+    }
+
+    label {
+        display: block; /* Display labels as block elements */
+        margin-bottom: 5px; /* Add margin below labels */
+    }
+</style>
+
+ 
 {% endblock %}

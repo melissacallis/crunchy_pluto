@@ -1,60 +1,33 @@
-{% extends 'core/layout.html' %}
-
-{% block title %}Success Page{% endblock %}
+<!-- core/templates/core/edit_profile.html -->
+{% extends "core/layout.html" %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Success!</h1>
-        <p class="lead">
-            <!-- Page Content -->
-            <div class="container-fluid p-0">
-                <!-- About -->
-                <section class="resume-section" id="about">
-                    <div class="resume-section-content">
-                        <h1 class="mb-0">
-                            {{ user.first_name }} {{ user.last_name }}
-                            <span class="text-primary"><a href="assets/img/myresume.pdf" class="btn btn-lg btn-primary">View Resume</a></span>
-                        </h1>
-                        <div class="subheading mb-5">
-                            · {{ user.city }}, {{ user.state }} {{ user.zip_code }} · {{ user.phone_number }} ·
-                            <a href="mailto:{{ user.email }}">{{ user.email }}</a>
-                        </div>
-                        <p class="lead mb-5">
-                            <ul class="list-unstyled">
-                                
-                        
-                                <div class="container-fluid">
-                                <ul class="list-unstyled">
-                                    {% for skill in skills %}
-                                    <li class="d-flex align-items-center mb-2">
-                                        <span class="bullet-point">{{ skill.name }}</span>                                        
-                                            <a href="{% url 'edit_skills' username=user.username skill_id=skill.id %}" class="btn btn-primary btn-sm mr-2">Edit</a>
-                                            <form method="post" action="{% url 'delete_skill' username=user.username skill_id=skill.id %}">
-                                                {% csrf_token %}
-                                                <button type="submit" class="btn btn-success btn-sm">Delete</button>
-                                            </form>                                       
-                                    </li>
-                                    {% empty %}
-                                    <li>No skills created yet.</li>
-                                    {% endfor %}
-                                </ul>
-                            </p><h1>Add Experience<h2>
-                                                      
-                            
-                                <p class="lead mb-5">
-                            <form method="post">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button type="submit">Save Experience</button>
-                            </form>
-                        </div>
-                </section>
+  <h2>Edit Profile</h2>
 
-                <a href="{% url 'add_skills' username=user.username %}" class="btn btn-primary">Add Skills</a>
-                <a href="{% url 'add_skills' username=user.username %}" class="btn btn-primary">Add Experience</a> 
-            </div>
-        </p>
-    </div>
-</div>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
+<style>
+    .form-group {
+        margin-bottom: 20px; /* Add margin between form groups */
+    }
+
+    label {
+        display: block; /* Display labels as block elements */
+        margin-bottom: 5px; /* Add margin below labels */
+    }
+</style>
+
+ 
 {% endblock %}

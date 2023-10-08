@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href= "{% url 'index' %}">Home </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'user_form' %}">Create my own profile</a>
@@ -239,7 +239,7 @@
 <div class="card-group mt-6">
     <!-- First Card -->
     <div class="card mb-4"> <!-- Add mb-4 class to create space -->
-        <img class="card-img-top mx-auto" src="assets/img/auctionscreenshot.png" alt="Card image cap" style="max-width: 70%;">
+        <img class="card-img-top mx-auto" src={% static 'img/auctionscreenshot.png' %} alt="Card image cap" style="max-width: 70%;">
         <div class="card-body">
             <h5 class="card-title">Recipe Project Includes</h5>
             <p class="card-text">
@@ -267,7 +267,7 @@
     </div>
     <!-- Second Card -->
     <div class="card mb-4"> <!-- Add mb-4 class to create space -->
-        <img class="card-img-top mx-auto" src="assets/img/recipescreenshot.png" alt="Card image cap" style="max-width: 70%;">
+        <img class="card-img-top mx-auto" src={% static 'img/recipescreenshot.png' %} alt="Card image cap" style="max-width: 70%;">
         <div class="card-body">
             <br>
             <h5 class="card-title">CS50 Auction Project Includes:</h5>

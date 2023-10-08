@@ -78,6 +78,14 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
+.form-group {
+  margin-bottom: 20px; /* Add margin between form groups */
+}
+
+label {
+  display: block; /* Display labels as block elements */
+  margin-bottom: 5px; /* Add margin below labels */
+}
 
 *,
 *::before,
@@ -10981,3 +10989,4 @@ section.resume-section .resume-section-content {
   transform: scale(1.2); /* Adjust the scale factor for zooming */
   cursor: pointer;
 }
+

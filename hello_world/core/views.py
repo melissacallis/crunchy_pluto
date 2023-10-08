@@ -1,33 +1,50 @@
+from django.contrib.auth.views import LogoutView
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UserForm
 from .models import UserProfile
-from .forms import UserForm
-from .forms import UserForm, BulletPointForm, ExperienceForm, EducationForm, AccomplishmentsForm
+from .forms import UserForm, BulletPointForm, ExperienceForm, EducationForm, AccomplishmentsForm, EditProfileForm, CreateUserForm
 from .models import BulletPoint, UserProfile, Experience, Education, Accomplishments
-from .forms import BulletPointFormSet
+
 from django.conf import settings
 import os
-
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages  
 from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
+from .forms import CreateUserForm, CustomAuthForm
+
+
 
 def index(request):
     # Your view logic here
     return render(request, 'core/index.html')
 
 def frontpage(request):
-    # Your view logic here
-    return render(request, 'core/frontpage.html')
+    return render (request, 'core/frontpage.html')
+
+
 
 def user_form(request, username=None):
     user = None  # Set user to None if this is a new user registration
 
     if request.method == 'POST':
-        form = UserForm(request.POST, request.FILES)
+        form = CreateUserForm(request.POST, request.FILES)
 
         if form.is_valid():
-            # Form data is valid, create or update the UserProfile
+            # Extract password fields from form cleaned data
             username = form.cleaned_data['username']
+            password1 = form.cleaned_data['password1']
+            password2 = form.cleaned_data['password2']
+
+            # Check if passwords match
+            if password1 != password2:
+                messages.error(request, 'Passwords do not match')
+                return redirect('user_form')
+
+            # Form data is valid, create or update the UserProfile
             user_profile, created = UserProfile.objects.get_or_create(username=username)
             user_profile.first_name = form.cleaned_data['first_name']
             user_profile.last_name = form.cleaned_data['last_name']
@@ -40,17 +57,59 @@ def user_form(request, username=None):
             user_profile.resume = form.cleaned_data['resume']
             user_profile.linkedin_link = form.cleaned_data['linkedin_link']
             user_profile.github_link = form.cleaned_data['github_link']
-            user_profile.project_link = form.cleaned_data['project_link'] 
+            user_profile.project_link = form.cleaned_data['project_link']
+            user_profile.set_password(password1)  # Set the user's password
             user_profile.save()
 
-            # Redirect to success_demo with the 'username' parameter
-            return redirect('success_demo', username=username)
+            # Authenticate and log in the user
+            user = authenticate(request, username=username, password=password1)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Registration successful')
+
+                # Redirect to success_demo with the 'username' parameter
+                return redirect('success_demo', username=username)
+            else:
+                messages.error(request, 'Authentication failed')
     else:
         # If it's not a POST request, initialize the form
-        form = UserForm(instance=user)  # Pass user if editing an existing user
+        form = CreateUserForm(instance=user)  # Pass user if editing an existing user
 
-    return render(request, 'core/user_form.html', {'form': form, 'user': user})
+    return render(request, 'registration/user_form.html', {'form': form, 'user': user})
 
+
+
+
+
+    
+
+def profile_view(request):
+    # Redirect to the success_demo view
+    return redirect('success_demo', username=request.user.username)
+
+
+
+def login_user(request):
+    if request.method == 'POST':
+        form = CustomAuthForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                print(f"User {username} logged in successfully.")
+                return redirect('success_demo', username=username)
+        return render(request, 'core/login_user.html', {'form': form})
+    else:
+        form = CustomAuthForm()
+        return render(request, 'core/login_user.html', {'form': form})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('index')  # Redirect to your desired page after logout
 
 
 
@@ -65,6 +124,26 @@ def get_user_data(username):
         # Handle the case where the provided username doesn't exist
         # You can return an error message or raise an exception as needed
         return None
+    
+def edit_profile(request, username):
+    try:
+        user_profile = UserProfile.objects.get(username=username)
+    except UserProfile.DoesNotExist:
+        # Handle the case where the user profile doesn't exist
+        return HttpResponse("User profile not found", status=404)
+
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES, instance=user_profile)
+
+        if form.is_valid():
+            # Update the user profile fields excluding username and password
+            form.save()
+            return redirect('success_demo', username=username)
+    else:
+        form = EditProfileForm(instance=user_profile)
+
+    return render(request, 'core/edit_profile.html', {'form': form, 'user': user_profile})
+
 
 def add_skills(request, username):
     if request.method == 'POST':
@@ -209,6 +288,7 @@ def delete_skill(request, username, skill_id):
 
 def success_demo(request, username=None):
     # Get the user data based on the provided username
+    
     user = get_object_or_404(UserProfile, username=username)
 
     # Retrieve the user's skills

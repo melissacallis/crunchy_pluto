@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-rc@04_mry_3-$@2sq$b9%-9jp6q2eyxf4bsw9&&esj++aw&r)p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 if 'CODESPACE_NAME' in os.environ:
     codespace_name = os.getenv("CODESPACE_NAME")
@@ -36,6 +36,7 @@ if 'CODESPACE_NAME' in os.environ:
 
 INSTALLED_APPS = [
     "core",
+    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -55,6 +56,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
+
+CSRF_COOKIE_SECURE = False  # Set to True for production with HTTPS
+CSRF_COOKIE_HTTPONLY = True
 
 X_FRAME_OPTIONS = "ALLOW-FROM preview.app.github.dev"
 
@@ -128,7 +132,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "hello_world" / "static",
 ]
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -137,5 +141,15 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+AUTHENTICATION_BACKENDS = ['core.backends.CustomAuthBackend',
+                           'django.contrib.auth.backends.ModelBackend',]
+
+LOGOUT_REDIRECT_URL = 'index'
+
+AUTH_USER_MODEL = 'core.UserProfile'
+
+
 
 

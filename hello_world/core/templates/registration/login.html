@@ -1,0 +1,20 @@
+{% extends 'core/layout.html' %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" required><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required><br>
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
+    <button type="submit">Log In</button>
+</form>
+  
+  {% if form.errors %}
+    <p class="error">Please check your username and password and try again.</p>
+  {% endif %}
+  
+  <p>Don't have an account? <a href="{% url 'user_form' %}">Register here</a>.</p>
+{% endblock %}

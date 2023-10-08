@@ -18,19 +18,29 @@ from django.urls import path, include
 from core import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 
-
-urlpatterns = [
+urlpatterns = [   
     path("", views.index),
     path("admin/", admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls")),
+    path("__reload__/", include("django_browser_reload.urls")),    
+    path('index/', views.index, name='index'),   
+    
+    path('accounts/profile/', views.profile_view, name='profile'),
+    path('register/', views.user_form, name='register'),
+
+    path('login_user/', views.login_user, name='login_user'),
+    
     path('user_form/', views.user_form, name='user_form'),
     path('user_form/<str:username>/', views.user_form, name='edit_user_form'),
     path('user_profile/<str:username>/', views.view_user_profile, name='view_user_profile'),
     path('success_demo/<str:username>/', views.success_demo, name='success_demo'),
     path('user_form/<str:username>/success_skills/', views.success_skills, name='success_skills'),
     path('user_form/<str:username>/edit_user_profile/', views.edit_user_profile, name='edit_user_profile'),
+    path('edit_profile/<str:username>/', views.edit_profile, name='edit_profile'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
+    
     path('user_form/<str:username>/success_skills/', views.edit_skills, name='edit_skills'),
     path('add_skills/<str:username>/', views.add_skills, name='add_skills'),
     path('user_form/<str:username>/success_skills/', views.success_skills, name='success_skills'),
@@ -48,6 +58,9 @@ urlpatterns = [
     path('add_certification/<str:username>/', views.add_certification, name='add_certification'),
     path('edit_certification/<str:username>/<int:accomplishments_id>/', views.edit_certification, name='edit_certification'),
     path('frontpage/', views.frontpage, name='frontpage'),
+    #path('logout/', views.logout_user, name='logout_user'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('registration/user_form/', views.user_form, name='user_form'),
     
 
 ]
