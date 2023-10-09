@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "whitenoise.middlewareWhiteNoseMiddleware"
 ]
 
 CSRF_COOKIE_SECURE = False  # Set to True for production with HTTPS
@@ -134,6 +138,8 @@ STATICFILES_DIRS = [
 
 STATIC_URL = "/static/"
 
+STATICFILES_STORAGE = 'whitnoise.storage.CompressedMainfestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -149,6 +155,8 @@ AUTHENTICATION_BACKENDS = ['core.backends.CustomAuthBackend',
 LOGOUT_REDIRECT_URL = 'index'
 
 AUTH_USER_MODEL = 'core.UserProfile'
+
+django_heroku.settings(locals())
 
 
 
