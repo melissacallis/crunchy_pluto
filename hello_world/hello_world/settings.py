@@ -140,7 +140,7 @@ STATICFILES_DIRS = [
 
 STATIC_URL = "/static/"
 
-STATICFILES_STORAGE = 'whitnoise.storage.CompressedMainfestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedMainfestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
