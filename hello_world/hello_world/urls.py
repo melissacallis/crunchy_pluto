@@ -58,7 +58,7 @@ urlpatterns = [
     path('add_certification/<str:username>/', views.add_certification, name='add_certification'),
     path('edit_certification/<str:username>/<int:accomplishments_id>/', views.edit_certification, name='edit_certification'),
     path('frontpage/', views.frontpage, name='frontpage'),
-    #path('logout/', views.logout_user, name='logout_user'),
+    path('logout_user/', views.logout_user, name='logout_user'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('registration/user_form/', views.user_form, name='user_form'),
     
