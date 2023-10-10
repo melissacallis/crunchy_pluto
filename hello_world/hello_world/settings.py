@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-rc@04_mry_3-$@2sq$b9%-9jp6q2eyxf4bsw9&&esj++aw&r)p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://jobchase-7ee74e9802a9.herokuapp.com/', '127.0.01']
+ALLOWED_HOSTS = ['jobchase-7ee74e9802a9.herokuapp.com/', '127.0.01']
 
 if 'CODESPACE_NAME' in os.environ:
     codespace_name = os.getenv("CODESPACE_NAME")
@@ -35,8 +35,7 @@ if 'CODESPACE_NAME' in os.environ:
 # Application definition
 
 INSTALLED_APPS = [
-    "core",
-    
+    "core",    
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
