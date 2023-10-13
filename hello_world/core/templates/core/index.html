@@ -34,18 +34,18 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
                         {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'logout_user' %}">Logout</a></li>
+                            <li class="nav-item"><a class="btn btn-primary btn-pill me-lg-3" href="{% url 'logout_user' %}">Logout</a></li>
                         {% else %}
-                            <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'login_user' %}">login</a></li>
+                            <li class="nav-item"><a class="btn btn-primary btn-pill me-lg-3" href="{% url 'login_user' %}">Login</a></li>
                         {% endif %}
-                    
-                
                         <li class="nav-item"><a class="nav-link me-lg-3" href="{% url 'register' %}">Register Now</a></li>
                     </ul></div>
+                              
+                    
                     <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
                             <i class="bi-chat-text-fill me-2"></i>
-                            <span class="small">Send Feedback</span>
+                            <span class="small">Contact Us</span>
                         </span>
                     </button>
                 </div>
@@ -80,7 +80,7 @@
                                         <!-- * * This can be a video, image, or just about anything else.-->
                                         <!-- * * Set the max width of your media to 100% and the height to-->
                                         <!-- * * 100% like the demo example below.-->
-                                        <img src="{% static 'img/demo_screenshot.png' %}" alt="Demo Screenshot" width="900" height="600">
+                                        <img src="{% static 'img/demo_screenshot.png' %}" alt="Demo Screenshot" width="500" height="350">
 
                                     </div>
                                 </div>
@@ -96,21 +96,7 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-xl-8">
                         <div class="h2 fs-1 text-white mb-4">"Target your dream job and unleash your skills with a feature display..."</div>
-                        <title>Login</title>
-                    </head>
-                    <body>
-                        <h2>Login</h2>
-                        {% if error_message %}
-                        <p>{{ error_message }}</p>
-                        {% endif %}
-                        <form method="post">
-                            {% csrf_token %}
-                            <label for="email">Email:</label>
-                            <input type="email" name="email" required><br>
-                            <label for="password">Password:</label>
-                            <input type="password" name="password" required><br>
-                            <input type="submit" value="Login">
-                        </form>
+                    
                     </div>
                 </div>
             </div>

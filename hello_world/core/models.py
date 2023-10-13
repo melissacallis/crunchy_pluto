@@ -3,6 +3,8 @@ from PIL import Image
 from django.core.validators import MaxLengthValidator, FileExtensionValidator
 from django.contrib.auth.models import AbstractUser, PermissionsMixin, Permission, BaseUserManager, Group
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+
 
 
 def resize_profile_image(instance, filename):
@@ -66,18 +68,7 @@ class UserProfile(AbstractUser, PermissionsMixin):
 
 
     # Add custom related_name for groups and user_permissions
-    groups = models.ManyToManyField(
-        Group,
-        verbose_name=_('groups'),
-        blank=True,
-        related_name='user_profiles'  # Specify your custom related_name here
-    )
-    user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name=_('user permissions'),
-        blank=True,
-        related_name='user_profiles_permissions'  # Specify your custom related_name here
-    )
+
     
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -107,10 +98,6 @@ class Experience(models.Model):
         blank=True, null=True,
         validators=[MaxLengthValidator(limit_value=500)]  # Set your desired character limit
     )
-    description_1 = models.TextField(
-        blank=True, null=True,
-        validators=[MaxLengthValidator(limit_value=500)]  # Set your desired character limit
-    )
     description_2 = models.TextField(
         blank=True, null=True,
         validators=[MaxLengthValidator(limit_value=500)]  # Set your desired character limit
@@ -124,6 +111,10 @@ class Experience(models.Model):
         validators=[MaxLengthValidator(limit_value=500)]  # Set your desired character limit
     )
     description_5 = models.TextField(
+        blank=True, null=True,
+        validators=[MaxLengthValidator(limit_value=500)]  # Set your desired character limit
+    )
+    description_6 = models.TextField(
         blank=True, null=True,
         validators=[MaxLengthValidator(limit_value=500)]  # Set your desired character limit
     )
